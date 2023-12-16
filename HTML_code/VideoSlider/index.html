@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VideoSlider</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="brand">Travel</a>
+        <div class="menu-btn"><i class='bx bx-menu-alt-right'></i></div>
+        <div class="nav">
+            <div class="nav-items">
+                <a href="#" class="homebtn">Home</a>
+                <a href="#">About</a>
+                <a href="#">Explore</a>
+                <a href="#">Gallery</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="home">
+        <video src="vid1.mp4" class="videoslide active" autoplay muted loop></video>
+        <video src="vid2.mp4" class="videoslide" autoplay muted loop></video>
+        <video src="vid3.mp4" class="videoslide" autoplay muted loop></video>
+        <video src="vid4.mp4" class="videoslide" autoplay muted loop></video>
+        <video src="vid5.mp4" class="videoslide" autoplay muted loop></video>
+        <div class="content">
+            <h1>Going<br><span>Places</span></h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id nibh id odio tristique dapibus et et quam. Praesent posuere tortor et diam fermentum condimentum. Sed cursus feugiat rutrum. Suspendisse id maximus arcu, at vulputate massa. Praesent commodo pretium leo. Donec non volutpat orci, in tempor dui.</p>
+            <a href="#">Learn More</a>
+        </div>
+        <div class="media-icons">
+            <a href="#"><i class='bx bxl-facebook'></i></a>
+            <a href="#"><i class='bx bxl-instagram'></i></a>
+            <a href="#"><i class='bx bxl-twitter'></i></a>
+        </div>
+        <div class="slider-nav">
+            <div class="nav-btn active"></div>
+            <div class="nav-btn"></div>
+            <div class="nav-btn"></div>
+            <div class="nav-btn"></div>
+            <div class="nav-btn"></div>
+        </div>
+    </section>
+    
+    <!-- Javascript -->
+
+    <script type="text/javascript">
+        const menuBtn = document.querySelector(".menu-btn");
+        const nav = document.querySelector(".nav");
+        const home = document.querySelector(".homebtn");
+
+        menuBtn.addEventListener("click", () => {
+            menuBtn.classList.toggle("active");
+            nav.classList.toggle("active");
+        });
+
+        home.addEventListener("click", () => {
+            nav.classList.toggle("active");
+        });
+
+        const btns = document.querySelectorAll(".nav-btn");
+        const slides = document.querySelectorAll(".videoslide");
+
+        var sliderNav = function(manual){
+            btns.forEach((btn) => {
+                btn.classList.remove("active")
+            });
+
+            slides.forEach((slide) => {
+                slide.classList.remove("active")
+            });
+
+            btns[manual].classList.add("active");
+            slides[manual].classList.add("active");
+        }
+
+        btns.forEach((btn,i) => {
+            btn.addEventListener("click", () => {
+                sliderNav(i);
+            });
+        });
+    </script>
+
+</body>
+</html>
